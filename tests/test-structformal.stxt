@@ -1,0 +1,33 @@
+struct book {
+	string title;
+	string author;
+	
+};
+
+struct book f(struct book b){
+	printstr(b.title);
+
+	b.title = "Sorcerer's Stone";
+
+	return b;
+}
+
+int main() {
+	struct book b1;
+	b1.title = "Harry Potter";
+	b1.author = "JK Rowling";
+
+	int i;
+	i = 1;
+	b1 = f(b1);
+
+
+	printstr(b1.title);
+
+	i = strlen(b1.title);
+
+	print(i);
+
+	return 0;
+	
+}

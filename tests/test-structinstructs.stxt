@@ -1,0 +1,15 @@
+struct teststruct1 {
+	int i;
+};
+
+struct teststruct2 {
+	struct teststruct1 ts;
+};
+
+int main() {
+	struct teststruct2 s_in_s;
+	struct teststruct1 y;
+	y = s_in_s.ts;
+	y.i = 1;
+	print(y.i);
+}

@@ -1,0 +1,10 @@
+int main()
+{
+	string s1;
+	s1 = "HELLO";
+	string ret_str;
+	ret_str = lower(s1);
+	printstr(ret_str);
+
+	return 0;
+}

@@ -1,0 +1,15 @@
+/* this should fail because trying to access a nonexistent member */
+
+struct point {
+	int x;
+	int y;
+	int z;
+};
+
+int main() {
+	struct point p;
+
+	p.a;
+
+	return 0;	
+}

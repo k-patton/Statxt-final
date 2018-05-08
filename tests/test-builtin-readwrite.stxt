@@ -1,0 +1,26 @@
+int main()
+{
+	string filename;
+	filename = "./tests/open-file-test2.txt";
+	string fd;
+	fd = open(filename, "w");
+
+
+	string str1;
+	str1 = "Hakuna Matata!";
+	
+	int putstr_err;
+	putstr_err = write(str1, 1, 14, fd);
+	int err_close;
+	err_close = close(fd);
+
+	fd = open(filename, "rb");
+	string read_data;
+	read_data =	calloc(4096,1);
+	int read_err;
+	read_err = read(read_data,1,4096,fd); 
+	printstr(read_data);
+	err_close = close(fd);
+
+	return 0;
+}

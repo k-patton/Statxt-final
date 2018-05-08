@@ -1,0 +1,9 @@
+struct teststruct {
+	string a;
+	float b;
+};
+
+int main() {
+	struct teststruct[3] arr;
+	arr[0].a = "hello";
+}

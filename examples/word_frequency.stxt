@@ -1,0 +1,57 @@
+/* 
+This program reads a file and prints the word and frequencies of all words in the doc 
+*/
+
+int main()
+{ 
+	string filename;
+	filename = "./examples/sample_test.txt";
+	string fd;
+	fd = open(filename, "rb");
+	string read_doc;
+	read_doc = calloc(2048, 1);
+	int read_count;
+	read_count = read(read_doc, 1, 2048, fd);
+	printstr("no of character read: ");
+	print(read_count); 
+	printstr(" ");
+	printstr("frequency of eachword as follows:");
+	printstr(" ");
+	string[2048] word_arr;
+	word_arr = word_array(read_doc);
+	int arr_len;
+	arr_len = atoi(word_arr[0]);
+	
+	int i;
+	int j;
+	int count;
+	string curr_word;
+
+	for(i=1; i<arr_len; i++) {
+		curr_word = word_arr[i];
+		if (strget(curr_word,0) != itoc(0)){
+			count = 1;
+			for(j=i+1; j<=arr_len; j++){
+				if(is_str_equal(curr_word, word_arr[j])){
+					count = count + 1;
+					strappend(word_arr[j], 0, itoc(0));
+				}
+			}
+			printstr(curr_word);
+			print(count);
+			printstr(" ");
+			
+		}
+	
+	}
+	int freed;
+	freed = free_array(word_arr);
+	if(freed==1){
+		printstr("array free success");
+	}
+	else {
+		printstr("array free fail");
+	}
+
+}
+

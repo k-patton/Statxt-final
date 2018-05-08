@@ -1,0 +1,23 @@
+string[3] testfunc() {
+	return ["hello", "world", "!"];
+}
+
+string[2] testfunc2() {
+	string[2] derp;
+
+	derp[0] = "hi";
+	derp[1] = "there";
+
+	return derp;
+}
+
+int main()
+{
+	string[3] s;
+	s = testfunc();
+
+	int i;
+	for (i = 0; i < 3; i++){
+		printstr(s[i]);
+	}
+}

@@ -1,0 +1,133 @@
+/* 
+This program reads a file and print the no. of syllables of each word and avg syllables 
+*/
+
+bool is_vowel(char c){
+	if( c=='a' || c=='e' || c=='i' || c=='o' || c=='u' || c=='y'){
+		return true;
+	}
+	return false;
+}
+
+void print_syllables_info(string filename){ 
+	string fd;
+	fd = open(filename, "rb");
+	string read_doc;
+	read_doc = calloc(2048, 1);
+	int read_count;
+	read_count = read(read_doc, 1, 2048, fd);
+	
+	string[2048] word_arr;
+	word_arr = word_array(read_doc);
+	int arr_len;
+	arr_len = atoi(word_arr[0]);
+	int i;
+	int j;
+	int count;
+	int word_count;
+	word_count = 0;
+	int total_count;
+	total_count = 0;
+	string curr_word;
+	int word_len;
+	word_len =0;
+	int last_i;	
+	int sentence_c;
+	sentence_c = 0;
+	char punc;
+	int k;
+
+	float total_syllables;
+	total_syllables = 0.0;
+	float word_count_f;
+	word_count_f = 0.0;
+	float sentence_count_f;
+	sentence_count_f = 0.0;
+	float FRES;
+
+
+	for(k=0;k<strlen(read_doc);k++){
+		punc = strget(read_doc,k);
+		if(punc == '.' || punc == '?' || punc == '!'){
+			sentence_c++;
+			sentence_count_f = sentence_count_f + 1.0;
+		}
+	}
+
+	for(i=1; i<=arr_len; i++) {
+		curr_word = lower(word_arr[i]);
+		word_len = strlen(curr_word);
+		count = 0;
+		last_i = -2;
+		for(j=0; j<word_len; j++){
+			if(is_vowel(strget(curr_word,j))){
+				if(last_i!=j-1){
+					count++;
+					total_count++;
+					total_syllables = total_syllables + 1.0;
+				}
+				last_i=j;
+			}
+				
+		}
+		word_count++;
+		word_count_f = word_count_f + 1.0;
+		printstr(curr_word);
+		if (count==0){
+			print(1);
+		}
+		else {
+			print(count);
+		}
+		printstr(" ");
+		free(curr_word);
+	}
+	printstr("avg syllables");
+	printf(total_syllables / word_count_f);
+
+	printstr("");
+
+	if(sentence_c != 0) {
+		printstr("FRES (Flesch reading ease score) is :");
+		/*print(word_count);
+		printf(word_count_f);
+		print(sentence_c);
+		printf(sentence_count_f);
+		print(total_count);
+		printf(total_syllables);
+		printstr("blah");
+		print(word_count/sentence_c);
+		printf(word_count_f/sentence_count_f);
+		print(total_count/word_count);
+		printf(total_syllables/word_count_f);*/
+
+
+
+		FRES = 206.835 - (1.015*(word_count_f/sentence_count_f)) - (84.6*(total_syllables/word_count_f));
+		printf(FRES);
+
+		//print(207 - (word_count/sentence_c) - (85*(total_count/word_count)));
+
+		printstr("Flesch-Kincaid Grade Level Formula:");
+		printf(0.39*(word_count_f/sentence_count_f) + 11.8*(total_syllables/word_count_f) - 15.59);
+	}
+	else {
+		print(word_count);
+	}
+	int freed;
+	freed = free_array(word_arr);
+	if(freed!=1){
+		printstr("array free fail");
+	}
+
+}
+
+int main() {
+
+	string filename;
+	filename = "./examples/sample_test.txt";
+
+	//printb(is_vowel(strget(filename,2)));
+
+	print_syllables_info(filename);
+}

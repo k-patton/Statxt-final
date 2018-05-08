@@ -1,0 +1,11 @@
+struct teststruct{
+	int i;
+	string s;
+};
+
+struct teststruct ts;
+
+int main()
+{
+	return 0;
+}

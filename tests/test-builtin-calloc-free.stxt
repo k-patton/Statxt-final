@@ -1,0 +1,12 @@
+int main()
+{
+	string str;
+	str = calloc(12, 1);
+	str = strcpy(str, "hello world");	
+	printstr(str);
+	int i;
+	i = free(str);
+	print(i);
+
+	return 0;
+}

@@ -1,0 +1,32 @@
+struct Book {
+	int Id;
+	string Title;
+	string Author;
+};
+
+struct Chapter {
+	string Title;
+	int Number;
+};
+
+int main()
+{
+	struct Book b1;
+	struct Chapter c1;
+
+	b1.Id = 2;
+	b1.Title = "Harry Potter";
+	b1.Author = "JK Rowling";
+
+	c1.Title = "Boy who lived";
+	c1.Number = 1;
+
+
+	print(b1.Id);
+	printstr(b1.Title);
+	printstr(b1.Author);
+	printstr(c1.Title);
+	print(c1.Number);
+	return 0;
+}
+

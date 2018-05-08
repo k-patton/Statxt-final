@@ -1,0 +1,161 @@
+
+int mod(int num,int d){
+        return (num-((num/d)*d));
+}
+string int_to_str(int n){
+        int len;
+        len = 0;
+        int n_copy;
+        n_copy = n;
+        while(n_copy != 0){
+                n_copy = n_copy/10;
+                len = len+1;
+        }
+        string n_str;
+        n_str = calloc(len+1,1);
+        int i;
+        int digit;
+        for(i=0; i<len; i++) {
+                digit = mod(n,10);
+                strappend(n_str, len-i-1, itoc(digit+48));
+                n = n/10;
+        }
+        strappend(n_str, len, itoc(0));
+        return n_str;
+}
+
+bool is_str_equal(string s1, string s2){
+	int len_s1; 
+	len_s1 =  strlen(s1);
+	int len_s2;
+	len_s2 = strlen(s2);
+	
+	if( len_s1 != len_s2) {
+		return false;	
+	}
+	int i;
+	for(i=0;i<len_s1;i++){
+		if (strget(s1,i) != strget(s2,i)){
+			return false;	
+		}
+	}
+	return true; 
+}
+
+
+string[2048] word_array(string line) {
+	string[2048] str_arr;
+	int len_l;
+	len_l = strlen(line);
+	
+	string line_copy;
+	line_copy = calloc(len_l+1,1);
+	line_copy = strcpy(line_copy, line);
+	
+	
+	int len_copy;
+	len_copy = strlen(line_copy);
+
+	int i;
+	i = 0;
+
+	char curr_c;
+	int start;
+	start = 0;
+	int count;
+	count = 0;
+
+	while(i<=len_l) {
+		
+		curr_c = strget(line_copy, i);
+		if (!isletter(curr_c)){
+			if((start)!=i){
+				count = count + 1;	
+				str_arr[count] = substring(line_copy, start, i-start);
+			}
+			start = i + 1;
+		} 
+		
+		i=i+1;
+		
+	}	
+	str_arr[0] = int_to_str(count); 
+	free(line_copy);
+	return str_arr;
+}
+
+int free_array(string[2048] arr_str) {
+	int len;
+	len = atoi(arr_str[0]);
+	int i;
+	for(i=0; i<=len; i++){
+		free(arr_str[i]);
+	}
+	return 1;
+}
+
+int word_frequency(string line, string word) {
+	int count;
+	count = 0;
+	string[2048] str_arr;
+	str_arr = word_array(line);
+	int len;
+	len = atoi(str_arr[0]);
+	
+	int i;
+	for(i=1; i<=len; i++) {
+		if(is_str_equal(word, str_arr[i])) {
+			count = count + 1;
+		}
+	}
+	return count;
+}
+
+int word_count(string line){
+	int len_l;
+	len_l = strlen(line);
+	int count;
+	count = 0;
+	int i;
+	i = 0;
+	int start;
+	start =0 ;
+	while(i<len_l) {
+		if(!isletter(strget(line, i))) {
+			if(start != i){
+				count = count +1;
+			}
+			start = i +1;
+		}	
+		i=i+1;
+	}
+	return count;
+}
+
+
+/*
+
+int main() {
+	string line;
+	line = "how are are you doing?";
+	string[2048] str_arr; 
+	str_arr = word_array(line); 
+	int len;
+	len = atoi(str_arr[0]);
+	print(len);
+	int i;
+	for(i=1; i<len+1; i++){
+		printstr(str_arr[i]);
+	}
+	
+	int freq;
+	freq = word_frequency(line, "are");
+	print(freq);
+
+	int wc;
+	wc = word_count(line);
+	print(wc);
+	printb('a'=='a');
+}
+
+*/ 

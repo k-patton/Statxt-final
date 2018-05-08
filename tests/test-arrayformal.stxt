@@ -1,0 +1,25 @@
+int testfunc(int[3] a, string[4] s)
+{
+	int i;
+	for (i = 0; i < 3; i++){
+		print(a[i]);
+	}
+	for (i = 0; i < 4; i++){
+		printstr(s[i]);
+	}
+
+	return 1;
+}
+
+int main()
+{
+	string[4] t;
+	int[3] b;
+
+	t = ["this", "is", "a", "test"];
+	b = [6,2,7];
+
+	print(testfunc(b,t));
+
+	return 0;
+}

@@ -1,0 +1,110 @@
+/* 
+This program reads a file and prints the word and frequencies of all words in the doc 
+*/
+
+struct books_info {
+	int count;
+	string[10] name;
+	string[10] author;
+	bool[10] abridged;
+	int[10] pages;
+	bool[10] valid_data;
+};
+
+
+struct books_info add_book(struct books_info books, string name, string author, bool abridged, int pages) {
+	
+	int count;
+	count = books.count;
+	bool found;
+	found = false;
+	int i;
+	if( count < 10) {
+		books.name[count] = name;
+		books.author[count] = author;
+		books.abridged[count] = abridged;
+		books.pages[count] = pages;
+		books.valid_data[count] = true;
+		books.count = count +1;
+		found = true;
+	}
+	else {
+		for(i=0;i<=count;i++){
+        	if(!(books.valid_data[i])){
+				books.name[count] = name;
+            	books.author[count] = author;
+            	books.abridged[count] = abridged;
+            	books.pages[count] = pages;
+            	books.valid_data[count] = true;
+                found = true;        
+			} 
+        }
+	}
+	if (!found){
+		printstr("array full! cannot add");
+	}
+	else {
+		printstr("book added");
+	}
+	return books;
+}
+
+
+void print_books(struct books_info books) {
+	int count;
+	count = books.count;
+	int i;
+	bool found;
+	found =false;
+	for(i=0;i<count;i++){
+		if(books.valid_data[i]){
+			printstr("book name:");
+			printstr(books.name[i]);
+			printstr("book author:");
+			printstr(books.author[i]);
+			printstr("book abridged:");
+			printb(books.abridged[i]);
+			printstr("book pages:");
+			print(books.pages[i]);
+			printstr("------------ ");
+			found = true;
+			} 
+	}
+	if(!found){
+		printstr("no books found");
+		printstr("");
+	}
+	
+}
+
+struct books_info delete_book(struct books_info books, string name) {
+	int count;
+	count = books.count;
+	int i;
+	for(i=0;i<count;i++) {
+		if(books.valid_data[i]) {
+			if(is_str_equal(books.name[i],name)) {
+				books.valid_data[i]=false;
+				printstr("book deleted");
+				printstr("");
+			}
+		}	
+	}	
+	return books;
+
+}
+
+int main()
+{  
+	struct books_info books;
+	books.count = 0;
+	books = add_book(books, "my_first_book", "zion", false, 19129);
+	printstr("");
+	printstr("printing all books info");
+	printstr("-------------");
+	print_books(books);
+	printstr("");
+	books = delete_book(books, "my_first_book");
+	print_books(books);	
+}
+

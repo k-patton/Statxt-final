@@ -1,0 +1,17 @@
+/* this should fail because trying to assign float to int */
+
+struct point {
+	int i;
+	float f;
+};
+
+int main() {
+	struct point p;
+
+	p.i = 1;
+	p.f = 3.14;
+
+	p.i = p.f;
+
+	return 0;
+}

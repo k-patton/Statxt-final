@@ -1,0 +1,16 @@
+struct book {
+	string title;	
+};
+
+struct book book_title() {
+	struct book btest;
+	btest.title = "Harry Potter";
+	return btest;
+}
+
+int main() {
+	struct book b1;
+	b1 = book_title();
+	printstr(b1.title); 
+	return 0;
+}

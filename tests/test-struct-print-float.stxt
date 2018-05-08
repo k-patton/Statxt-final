@@ -1,0 +1,24 @@
+struct test {
+	int i;
+	int j;
+	float f;
+};
+
+int main()
+{
+	char x;
+	x = 'a';
+
+	int i;
+	i = 2;
+
+	struct test s1;
+
+	s1.i = 1;
+	s1.j = i;
+	s1.f = 3.4;
+
+	printf(s1.f);
+
+	return 0;
+}

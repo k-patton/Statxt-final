@@ -1,0 +1,33 @@
+struct teststruct {
+	int[3] a;
+	int b;
+};
+
+int main()
+{
+	struct teststruct s;
+	s.a = [4,5,6];
+	s.b = 3;
+
+	int[3] c;
+
+	c = s.a;
+
+	int[3] d;
+
+	d = c;
+
+	int i;
+	i = 1;
+
+	s.a[1] = 9;
+
+	print(s.a[1]);
+
+	for(i = 0; i < s.b; i++){
+		print(s.a[i]);
+		print(c[i]);
+	}
+
+	return 0;
+}

@@ -1,0 +1,14 @@
+int main()
+{
+	string str1;
+	str1 = "hello";
+	string str2;
+	str2 = "world";
+
+	string ret_str;
+	ret_str = strcat(str1, " ");
+	ret_str = strcat(ret_str, str2);
+	printstr(ret_str);
+
+	return 0;
+}

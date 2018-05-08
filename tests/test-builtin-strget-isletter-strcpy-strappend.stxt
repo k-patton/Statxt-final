@@ -1,0 +1,23 @@
+int main() {
+	string str1;
+	str1 = "hel*o#";
+	char c1;
+	char c2;
+	c1 = strget(str1, 1);
+	c2 = strget(str1, 3);
+	printchar(c1);
+	printchar(c2);
+	
+	bool b1;
+	bool b2;
+	b1 = isletter(c1);
+	b2 = isletter(c2);
+	printb(b1);
+	printb(b2);
+
+	string str2;
+	str2 = calloc(strlen(str1), 1);
+	str2 = strcpy(str2, str1);
+	strappend(str2,3,'l');
+	printstr(str2);
+}

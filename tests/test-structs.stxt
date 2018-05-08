@@ -1,0 +1,42 @@
+struct point{
+	int x;
+	int y;
+	int z;
+};
+
+struct pointf{
+	float x;
+	int y;
+	int z;
+};
+
+int main()
+{
+	struct point p1;
+
+	p1.x = 1;
+	p1.z = 5;
+	p1.y = 3;
+
+	struct pointf p2;
+
+	p2.x = 1.1;
+	p2.y = 2;
+	p2.z = 3;
+
+	int i;
+
+	i = p1.x + p1.y + p1.z;
+
+	print(p1.x);
+	print(p1.y);
+	print(p1.z);
+
+	printf(p2.x);
+	print(p2.y);
+	print(p2.z);
+
+	print(i);
+
+	return 0;
+}

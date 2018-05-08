@@ -1,0 +1,11 @@
+int main() {
+	string str1;
+	str1 = "Hello World!";
+	string str_m;
+	str_m = moveptr(str1, 6);
+	printstr(str_m);
+
+	string sub_str;
+	sub_str = substring(str1, 6, 5);
+	printstr(sub_str);
+}

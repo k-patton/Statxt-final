@@ -1,0 +1,14 @@
+int main()
+{
+	char c;
+	
+	c = itoc(104);
+	printchar(c);
+
+	int i;
+	i = atoi("678");
+	print(i);
+
+
+	return 0;
+}

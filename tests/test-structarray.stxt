@@ -1,0 +1,16 @@
+struct teststruct {
+	string[3] a;
+	int b;
+};
+
+int main() {
+	struct teststruct s;
+	string[3] c;
+	s.a = ["hello","Professor","Townsend"];
+	s.b = 3;
+	c = s.a;
+	int i;
+	for(i = 0; i < s.b; i++) {
+		printstr(c[i]);
+	}
+}

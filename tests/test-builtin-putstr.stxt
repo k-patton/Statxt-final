@@ -1,0 +1,32 @@
+int main()
+{
+	string filename;
+	filename = "./tests/open-file-test.txt";
+	string outfile;
+	outfile = "./tests/test-builtin-putstr.out";
+	string fd;
+	fd = open(filename, "a");
+	string fo;
+	fo = open(outfile, "a");
+
+
+	string str1;
+	str1 = "Hakuna";
+	
+	int putstr_err;
+	putstr_err = putstr(str1, fd);
+	putstr(str1,fo);
+	close(fo);
+	int err_close;
+	err_close = close(fd);
+
+	fd = open(filename, "rb");
+	string read_data;
+	read_data =	calloc(4096,1);
+	int read_err;
+	read_err = read(read_data,1,4096,fd); 
+	printstr(read_data);
+	err_close = close(fd);
+
+	return 0;
+}

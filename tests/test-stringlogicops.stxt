@@ -1,0 +1,22 @@
+int main()
+{
+	string s0;
+	string s1;
+	string s2;
+	string s3;
+
+	s0 = "hello";
+	s1 = "world";
+	s2 = "HELLO";
+	s3 = "hello";
+
+	if(s0 == "hello") {
+		printb(true);
+	}
+
+	printb(s0 == s3);
+	printb(s0 == s1);
+	printb(s0 == s2);
+	printb(s0 != s2);
+
+}

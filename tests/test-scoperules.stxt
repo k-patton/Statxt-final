@@ -1,0 +1,24 @@
+int a;
+
+void func() {
+	int b;
+	b = 10;
+	a = 2;
+
+	print(b);
+	print(a);
+}
+
+int main()
+{
+	a = 0;
+	int b;
+	b = 5;
+	func();
+	printstr("");
+	print(b);
+	printstr("");
+	print(a);
+
+	return 0;
+}

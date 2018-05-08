@@ -1,0 +1,38 @@
+bool is_str_equal(string s1, string s2){
+	int len_s1; 
+	len_s1 =  strlen(s1);
+	int len_s2;
+	len_s2 = strlen(s2);
+	
+	if( len_s1 != len_s2) {
+		return false;	
+	}
+	int i;
+	for(i=0;i<len_s1;i++){
+		if (strget(s1,i) != strget(s2,i)){
+			return false;	
+		}
+	}
+	return true; 
+}
+
+int main() {
+	int[3] a;
+	a = [3,2,4];
+	print(a[1]);
+
+	string[4] s;
+
+	s = ["hello", "world", "yay", "what"];
+
+	int i;
+	for (i = 0; i < a[2]; i++) {
+		printstr(s[i]);
+	}
+
+	if (is_str_equal(s[0], "hello")){
+		printstr("yes");
+	} else {
+		printstr("no");
+	}
+}

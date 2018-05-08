@@ -1,0 +1,26 @@
+int main()
+{
+	int i;
+	int i1;
+	int i2;
+	int i3;
+	string s;
+	string s1;
+	string s2;
+
+	s = "hello world";
+	s1 = "hello";
+	s2 = "world";
+
+
+	i = strcmp(s, "hello world");
+	print(i);
+
+	i2 = strcmp(s, s1);
+	print(i2);
+
+	i3 = strcmp(s, s2);
+	print(i3);
+
+	return 0;
+}
